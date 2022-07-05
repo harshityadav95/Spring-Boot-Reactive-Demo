@@ -25,7 +25,8 @@ public class CustomerService {
         return customers;
     }
 
-    public Flux<Customer> loadAllCustomersStream(){
+    public
+    Flux<Customer> loadAllCustomersStream(){
         long start=System.currentTimeMillis();
         Flux<Customer> customers=dao.getCustomersStream();
         long stop=System.currentTimeMillis();
