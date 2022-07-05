@@ -13,6 +13,7 @@ public class CustomerDao {
     public List<Customer> getCustomers(){
 
         return IntStream.rangeClosed(1,50)
+                .peek(i-> System.out.println("Processing Count"+i))
                 .mapToObj(i-> new Customer(i,"Cusomer"+i))
                 .collect(Collectors.toList());
     }
