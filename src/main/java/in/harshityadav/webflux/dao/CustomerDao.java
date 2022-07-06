@@ -42,4 +42,15 @@ public class CustomerDao {
 
     }
 
+    public Flux<Customer> getCustomersStreamNoSleep(){
+
+        return Flux.range(1,50)
+                .delayElements(Duration.ofSeconds(1))
+                .doOnNext(i-> System.out.println("Processing Count in Stream"+i))
+                .map(i-> new Customer(i,"Cusomer"+i));
+
+
+
+    }
+
 }
