@@ -26,4 +26,19 @@ public class CustomerStreamHandler {
 
     }
 
+
+    public Mono<ServerResponse> findCustomer(ServerRequest request){
+        int customerId =Integer.valueOf(request.pathVariable("input"));
+
+        // for only taking single value
+        //dao.getCustomersStreamNoSleep().filter(c-> c.getId()==customerId).take(1).single();
+        Mono<Customer> customerMono= dao.getCustomersStreamNoSleep().filter(c-> c.getId()==customerId).next();
+
+        return ServerResponse.ok().body(customerMono,Customer.class);
+
+
+
+
+    }
+
 }
